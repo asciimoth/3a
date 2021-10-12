@@ -38,8 +38,10 @@ void * split(char str[], char delimiter);
 /* Parce head of .3a file to params */
 void read_head(FILE *fp, struct params *param);
 
+/* concat two str */
 char * append(char * a, char * b);
 
+/* Parce body of .3a file */
 char * read_animation(FILE *fp);
 
 #endif

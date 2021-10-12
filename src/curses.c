@@ -54,7 +54,6 @@ int is_bold(int fg){
 
 void setcolor(int fg, int bg){
     /* set the color pair (colornum) and bold/bright (A_BOLD) */
-
     attron(COLOR_PAIR(colornum(fg, bg)));
     if (is_bold(fg)) {
         attron(A_BOLD);
@@ -63,7 +62,6 @@ void setcolor(int fg, int bg){
 
 void unsetcolor(int fg, int bg){
     /* unset the color pair (colornum) and bold/bright (A_BOLD) */
-
     attroff(COLOR_PAIR(colornum(fg, bg)));
     if (is_bold(fg)) {
         attroff(A_BOLD);

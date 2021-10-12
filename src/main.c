@@ -2,9 +2,11 @@
 #include "format.h"
 #include "curses.h"
 
+/* Info for 3a --help print */
 const char *argp_program_version = "3a 1.0.0";
 static char doc[] = "TUI tool for playng .3a animations.";
 
+/* stuct for command line args */
 struct arguments{
     unsigned short delay; bool delay_exist;
     bool loop; bool loop_exist;
@@ -20,6 +22,7 @@ static struct argp_option options[] = {
     { 0 } 
 };
 
+/* command line args handler  */
 static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     struct arguments *arguments = state->input;
     switch (key){
@@ -51,6 +54,7 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     return 0;
 }
 
+/* apply cl args to params */
 void apply_args(struct params *param, struct arguments *args){
     if (args->delay_exist){
         param->delay = args->delay;
@@ -73,25 +77,19 @@ int main( int argc, char **argv ){
     struct params params = { 0, 0, DEFAULT_LAG, DEFAULT_LOOP, DEFAULT_COLORS };
     char * animation;
     if(arguments.file_exist){
-        //printf("file: %s\n", arguments.file);
         FILE *fp;
         if((fp=fopen(arguments.file, "r"))==NULL){
             printf("Cannot open file %s", arguments.file);
-            exit(0);
+            exit(1);
         }
         read_head(fp, &params);
         apply_args(&params, &arguments);
         animation = read_animation(fp);
         fclose(fp);
     }else{
-        //printf("No file in args\n");
-        /*
-        В качестве параметров используем демо параметры
-        возвращаем строку с анимацией из демо
-        */
-        return 0;
+        printf("No file passed");
+        exit(1);
     }
-    //printf("%u\n", params.datacols);
     render_ncurses(&params, animation);
     return 0;
 }
