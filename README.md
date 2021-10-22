@@ -1,15 +1,17 @@
 # Animated Ascii Art (3a)
-- Reasons
-- Specification
-  - Comments
-  - Header
-  - Body
-  - Example
-  - Creating extensions
-- Reference implementation
-  - Installation
-  - Usage
-- Other implementations
+- [Reasons](#reasons)
+- [Specification](#specification)
+  - [Comments](#comments)
+  - [Header](#header)
+  - [Body](#body)
+  - [Example](#example)
+  - [Creating extensions](#creating-extensions)
+- [Reference implementation](#reference-implementation)
+  - [Dependencies](#dependencies)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [Other implementations](#other-implementations)
+  - rs3a
 
 ## Reasons
 While customizing my *nix system, I was going to actively use ascii animations for styling. I expected that there is a widespread text format for storing animated ascii art. But it turned out that this was not the case. So I had to create it.
@@ -214,10 +216,25 @@ You will need the ncurses library version 4 and higher.
 2) Build `# make build`
 3) Install `$ make install`
 
-### Usage
-Run `3a <file.3a>` where <file.3a> is is an animation file, to play it.  
-Run `3a -c` to show demo colortable with all combinations of text and background colors.  
-Run `3a --help` to see other options.  
+### Usage  
+Run `3a <file.3a>` where <file.3a> is is an animation file, to play it.
+Run `3a -c` to show demo colortable with all combinations of foreground and background colors.
+Run `3a --help` to see other options.
+```
+Usage: 3a [OPTION...]
+TUI tool for playng .3a animations.
+
+  -c, --colortable           Show colortable
+  -d, --delay=NUM            Force frames draw delay
+  -l, --loop                 Enable loop mode
+  -n, --noloop               Disable loop mode
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
+```
 
 ## Other implementations
 - [rs3a](https://github.com/DomesticMoth/rs3a) - Rust library for work with 3a format
