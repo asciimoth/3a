@@ -6,7 +6,7 @@
   - [Body](#body)
   - [Example](#example)
   - [Creating extensions](#creating-extensions)
-- More art
+- [More art](#more-art)
 - [Reference implementation](#reference-implementation)
   - [Dependencies](#dependencies)
   - [Installation](#installation)
