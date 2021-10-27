@@ -213,8 +213,8 @@ This repository also provides an example of a TUI tool for rendering 3a animatio
 You will need the ncurses library version 4 and higher.  
 
 ### Installation
-1) Clone this repo `# git clone https://github.com/DomesticMoth/3a.git`
-2) Build `# make build`
+1) Clone this repo `$ git clone https://github.com/DomesticMoth/3a.git`
+2) Build `$ make build`
 3) Install `$ make install`
 
 ### Usage  
