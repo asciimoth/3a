@@ -200,7 +200,7 @@ U0DC_D-@ml4[7sP7&)C9Q>77777777777777777777770000000000000000000000
 ```
 
 And this is how the render of this art looks like:  
-![Drag Racing](https://i.imgur.com/yA4yCT0.png)
+![Drag Racing](https://i.imgur.com/a013QHv.gif)
 
 ### Creating extensions
 You can create your own format extensions by adding parameters and data columns. Use the "datacols" and maybe "colors none" parameter to save partial compatibility of your extension with the original format.  
