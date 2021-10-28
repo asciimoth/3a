@@ -89,6 +89,7 @@ Matching a number to a color:
 - c BRIGHT_RED
 - d BRIGHT_MAGENTA
 - e BRIGHT_YELLOW  
+- f BRIGHT_WHITE 
 
 Background support only [0-7] colors. Text support support all 16 colors.  
 
