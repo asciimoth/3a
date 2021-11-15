@@ -12,8 +12,9 @@
   - [Installation](#installation)
   - [Usage](#usage)
 - [Other implementations](#other-implementations)
-  - rs3a
-  - aaa
+  - [rs3a](https://github.com/DomesticMoth/rs3a)
+  - [py3a](https://github.com/DomesticMoth/py3a)
+  - [aaa](https://github.com/DomesticMoth/aaa)
 
 ## Reasons
 While customizing my *nix system, I was going to actively use ascii animations for styling. I expected that there is a widespread text format for storing animated ascii art. But it turned out that this was not the case. So I had to create it.
@@ -242,4 +243,5 @@ for any corresponding short options.
 
 ## Other implementations
 - [rs3a](https://github.com/DomesticMoth/rs3a) - Rust library for work with 3a format
+- [py3a](https://github.com/DomesticMoth/py3a) - Python library for work with 3a format
 - [aaa](https://github.com/DomesticMoth/aaa) - Tui tool for 3a files rendering written with pure rust
