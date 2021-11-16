@@ -139,7 +139,7 @@ author Moth
 	There
 	is
 	one
-	ore
+	or
 	more
 	empty
 	lines
