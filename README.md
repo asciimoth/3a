@@ -14,6 +14,7 @@
 - [Other implementations](#other-implementations)
   - [rs3a](https://github.com/DomesticMoth/rs3a)
   - [py3a](https://github.com/DomesticMoth/py3a)
+  - [go3a](https://github.com/DomesticMoth/go3a)
   - [aaa](https://github.com/DomesticMoth/aaa)
 
 ## Reasons
@@ -244,4 +245,5 @@ for any corresponding short options.
 ## Other implementations
 - [rs3a](https://github.com/DomesticMoth/rs3a) - Rust library for work with 3a format
 - [py3a](https://github.com/DomesticMoth/py3a) - Python library for work with 3a format
+- [go3a](https://github.com/DomesticMoth/go3a) - Golang library for work with 3a format
 - [aaa](https://github.com/DomesticMoth/aaa) - Tui tool for 3a files rendering written with pure rust
