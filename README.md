@@ -17,6 +17,7 @@
   - [go3a](https://github.com/DomesticMoth/go3a)
   - [aaa](https://github.com/DomesticMoth/aaa)
   - [convert3a](https://github.com/DomesticMoth/convert3a)
+- [License](#license)
 
 ## Reasons
 While customizing my *nix system, I was going to actively use ascii animations for styling. I expected that there is a widespread text format for storing animated ascii art. But it turned out that this was not the case. So I had to create it.
@@ -249,3 +250,19 @@ for any corresponding short options.
 - [go3a](https://github.com/DomesticMoth/go3a) - Golang library for work with 3a format
 - [aaa](https://github.com/DomesticMoth/aaa) - Tui tool for 3a files rendering written with pure rust
 - [convert3a](https://github.com/DomesticMoth/convert3a) - Tool for convert 3a animations to media formats 
+
+# License
+Files in this repository are distributed under the [CC0 license](./LICENSE).  
+<p xmlns:dct="http://purl.org/dc/terms/">
+  <a rel="license"
+     href="http://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+  </a>
+  <br />
+  To the extent possible under law,
+  <a rel="dct:publisher"
+     href="https://github.com/asciimoth">
+    <span property="dct:title">asciimoth</span></a>
+  has waived all copyright and related or neighboring rights to
+  <span property="dct:title">3a</span>.
+</p>
