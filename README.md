@@ -59,8 +59,6 @@ Optional parameters:
 - utf8 - Some implementations may have utf8 support, despite limiting the format to ascii characters only. If you create art only for such implementations, add this parameter to your header.
 - datacols - Number of columns with information (unsigned 16-bit integer). Use this parameter in format extensions. By default, it is calculated from the colors parameter.
 - preview - Frame number (starting from 0) that should be shown as a static preview of the animation (unsigned 16-bit integer). By default is 0.
-
-Advanced Options (may not be implemented):
 - title - Title of art (str).
 - author - Author of art (str).
 
