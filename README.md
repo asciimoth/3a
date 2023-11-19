@@ -61,7 +61,6 @@ Optional parameters:
 - preview - Frame number (starting from 0) that should be shown as a static preview of the animation (unsigned 16-bit integer). By default is 0.
 
 Advanced Options (may not be implemented):
-- audio - Path to the soundtrack file relative to the current 3a file (str). This soundtrack should be played in parallel with the animation. It is assumed that the duration of the soundtrack coincides with the duration of the animation. It is also assumed that the animation rendering speed is sufficient not to lose synchronization with the audio track. If this is not the case, then the way to solve these problems remains at the discretion of the developer of a particular program and is not described in the standard
 - title - Title of art (str).
 - author - Author of art (str).
 
