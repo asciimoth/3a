@@ -1,4 +1,5 @@
 # Animated Ascii Art (3a)
+- [Adbout](#adbout)
 - [Reasons](#reasons)
 - [More art](#more-art)
 - [Specification](#specification)
@@ -19,6 +20,12 @@
   - [convert3a](https://github.com/DomesticMoth/convert3a)
 - [License](#license)
 
+# Adbout
+3a (stands for "Animated Ascii Art") is a simple human-readable text format for storing ascii animations, convenient for viewing and editing through any text editor.  
+- 3a supports 8 colors for background and 16 colors for characters
+- 3a only supports ASCII characters because it must be compatible with ncurses
+- 3a format has a small, but existing possibility for extension
+
 ## Reasons
 While customizing my *nix system, I was going to actively use ascii animations for styling. I expected that there is a widespread text format for storing animated ascii art. But it turned out that this was not the case. So I had to create it.
 
@@ -26,11 +33,6 @@ While customizing my *nix system, I was going to actively use ascii animations f
 You can find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 
 ## Specification
-3a (stands for "Animated Ascii Art") is a simple human-readable text format for storing ascii animations, convenient for viewing and editing through any text editor.  
-- 3a supports 8 colors for background and 16 colors for characters
-- 3a only supports ASCII characters because it must be compatible with ncurses
-- 3a format has a small, but existing possibility for extension
-
 3a file consists of two parts: the header and the body. The header contains the metadata of the art and the body contains the art itself. The header is separated from the body by one or more empty lines.  
 
 ### Comments
