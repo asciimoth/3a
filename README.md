@@ -1,12 +1,12 @@
 # Animated Ascii Art (3a)
 - [Reasons](#reasons)
+- [More art](#more-art)
 - [Specification](#specification)
   - [Comments](#comments)
   - [Header](#header)
   - [Body](#body)
   - [Example](#example)
   - [Creating extensions](#creating-extensions)
-- [More art](#more-art)
 - [Reference implementation](#reference-implementation)
   - [Dependencies](#dependencies)
   - [Installation](#installation)
@@ -21,6 +21,9 @@
 
 ## Reasons
 While customizing my *nix system, I was going to actively use ascii animations for styling. I expected that there is a widespread text format for storing animated ascii art. But it turned out that this was not the case. So I had to create it.
+
+## More art
+You can find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 
 ## Specification
 3a (stands for "Animated Ascii Art") is a simple human-readable text format for storing ascii animations, convenient for viewing and editing through any text editor.  
@@ -211,8 +214,6 @@ And this is how the render of this art looks:
 
 ### Creating extensions
 You can create your own format extensions by adding parameters and data columns. Use the "datacols" and maybe "colors none" parameter to save partial compatibility of your extension with the original format.  
-## More art
-You can find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 ## Reference implementation
 This repository also provides an example of a TUI tool for rendering 3a animations.
 
