@@ -4,10 +4,21 @@
 - unicode
 - graphemes
 - banned chars
+    - `\t`
+- `\r` should be absolutely ignored
+
+- what is ASCII alpha-numeric
+- what is whitespace char
+- what is ASCII space
+
+# Terminology
+- character/char - unicode code point
+- line and row are interchangeable. Ends on `\n`
+    - What is empty/void/blank line
 
 # Concepts
 3a **art** is a set of channels.  
-**Channels** are parallel sequences of frames.  
+**Channels** are parallel sequences of frames indexed from 0.  
 **Frames** are a sequences of rows.  
 **Rows** are a sequences of elements of type unique for channel.  
   
@@ -59,19 +70,92 @@ Typically there are single delay value for whole 3a art, but one can be
 specified for each frame individually.  
   
 3a art can also contain various metadata like title, author name, tags and so on.
+
 # File Format
-- blocks; at least 2
-    - blank line separation
-- first block is always a header
-    - contains art metadata and information about other blocks and their count
+## Comments
+Some parts of 3a file are *explicitly* defined as supporting comments.
+If so, comments are *entire* rows starting with `;;`. There is no multiline or
+comments or comments that occupy only part of row.
+
+## Structure
+3a file consists of blocks separated by one or more blank lines.
+There is always atleast two blocks: [header](#header-block) (first) and [body](#body-block) (last).  
+Each block starts with **block title row** of format `@<block name>` with two exceptions:
+- `@header` title row before header block can be always omitted.
+- `@body` title row before body block can be omitted if there is only header and body blocks in file.
+
+Block name can contain only ASCII alpha-numeric chars and `+-_.`.
+
+## Header Block
+Header contains art metadata.
+Header supports [comments](#comments).
+Header consists of, key-value pairs, each one on new row.
+In each pair, first word (part before first whitespace char) at the beginning
+of the row is a key and remains text to the end of row is a value or values.
+Value(s) parsing logic is specific for each key.  
+Some keys are allowed to occurs multiple times in the header, which is
+explicitly defined. For other keys, multiple occurrences are an error.  
+All keys and values are case sensitive unless otherwise stated.
+
+### Title Key
+**title** key defines an art title. Whole line after key to the end of line is
+a single string value. Sequences of multiple copies of same whitespace char
+SHOULD be replaced with one during decoding/encoding. All leading and trailing
+whitespace chars SHOULD be trimmed.
+
+### Author Key
+**author** key defines author of an art. Value parsing rules are same for
+[title key](#title-key). Author key can occurs in header multiple times which
+means a set of authors. Multiple occurs of author key with same
+value (after whitespace trimming and deduplication) MUST be deduplicated.
+
+### Original Author Key
+**orig-author** key defines author of original art for derivatives ones.
+It works same way as [author key](#author-key).
+
+### Maintainer Key
+
+### Source Key
+
+### Editor Key
+
+### License Key
+
+### Delay Key
+
+### Loop Key
+- true by default
+
+### Preview Key
+- 0 by default
+
+### Style Key
+
+### Tags
+
+### Header Example
+```3a
+@header
+;; This is comment. Block title on prev line is redundant, but
+;; presented for example.
+title A Cool Art
+author Me
+author You
+orig-author Some other guy
+;; This is another comment
+editor nvim
+license CC0-1.0
+preview 3
+src https://example.com/my-cool-art
+delay 1s 10 2s
+#ascii #ansi
+#art
+```
+
+## Body Block
 - last block is always a body
     - contains art itself (channels, frames, etc)
     - may contain blank lines
-
-## header
-- Comments
-- Params
-- Sections
 
 # Extending
 - Naming convention
@@ -82,6 +166,8 @@ specified for each frame individually.
 # Decoding
 
 # Formatting and Optimisation
+- order of blocks
+- order of KV pairs in header
 
 # MIME
 
