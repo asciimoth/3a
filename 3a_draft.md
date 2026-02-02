@@ -10,6 +10,7 @@
 - what is ASCII alpha-numeric
 - what is whitespace char
 - what is ASCII space
+- what is "word"
 
 # Terminology
 - character/char - unicode code point
@@ -26,7 +27,7 @@ There are two major channels:
 - **text** channel holds frames of textual art itself. It's elements are UNICODE grapheme clusters.
 - **style** channel holds various information for text channel elements (fg/bg colors, italic, blinking, etc). It's elements are names of style mappings.
   
-**Style mappings** are bindings between styles and single grapheme names.  
+**Style mappings** are bindings between styles and single char names.  
 **Style** is a set of visual modificators:
 - **fg** and **bg** - foreground and background text colors. Can be
     - ANSI 4-bit colors (Black/Blue/Green/Cyan/Red/Magenta/Yellow/Wite + brightness mod)
@@ -66,8 +67,10 @@ frames count and therefore one to one mapping between them.
   
 To show frames with adequate timing there are **delay** value describing pause
 between frames in milliseconds.
-Typically there are single delay value for whole 3a art, but one can be
-specified for each frame individually.  
+Typically there are single "global" delay value for whole 3a art, but one can
+be specified for each frame individually. Deleay value for specific frame means
+that this time of *milliseconds* must be skipped *after* this frame before
+continue to next one. Default delay value for 3a is 50.  
   
 3a art can also contain various metadata like title, author name, tags and so on.
 
@@ -113,25 +116,70 @@ value (after whitespace trimming and deduplication) MUST be deduplicated.
 **orig-author** key defines author of original art for derivatives ones.
 It works same way as [author key](#author-key).
 
-### Maintainer Key
-
 ### Source Key
+**src** key defines link to art's original. Typically url. Whole line
+after key to the end of line is a single string value. All leading and trailing
+whitespace chars SHOULD be trimmed.
 
 ### Editor Key
+**editor** key provides info about editor software that was used to create this
+art.
 
 ### License Key
+**license** key defines [SPDX license identifier](https://spdx.org/licenses/)
+or "proprietary" string. All leading and trailing whitespace chars SHOULD be
+inored. Not defined license key or license key with unknown identifier MUST be
+treated as "proprietary" unless otherwise stated
+in context where 3a file is stored (LICENSE in repo, etc).
 
 ### Delay Key
+**delay** key defines frame delay(s) as described in [concepts](#concepts).
+It can have single or many values separated by one or multiple whitespaces.  
+One and only one value of delay key MUST be a string representation of
+unsigned decimal int. This value defines "global" delay.  
+There also can be arbitrary number of colon-separated int pairs. In each pair
+first int is a frame number (starting from 0) and second one is a delay specific
+for this frame. Delays defined for non-existent frames SHOULD be ignored.  
+If delay key is not provided, global delay has default value 50 milliseconds
+and there is no frame-specific delays.
 
 ### Loop Key
-- true by default
+**loop** key defines should art's animation playback be looped or stops after
+first run. It have single case-insensitive boolean value which can be `yes` for
+true and `no` for false. If loop key is not provided it is true by default.
 
 ### Preview Key
-- 0 by default
+**preview** key defines number of frame that should be used as a preview. It
+have only one decimal integer value. Default is 0. If there is no frame with
+such number, preview key SHOULD be ignored.
 
 ### Style Key
+**style** key defines new style binding. It have at least two values separated
+by whitespaces. First value is a single char - name of new style. All next
+following values defines it modificators.  
+Modificators can be:
+- `i` - enables italic mode
+- `b` - enables bold mode
+- `c` - enables crossed mode
+- `u` - enables underscore mode
+- `fg:<color>` and `bg:<color>` - set foreground and background color
+  
+Colors in `fg:<color>` and `bg:<color>` can be
+- kebab case 3-bit ANSI color name (`green`, `bright-red`, etc)
+- 3-bit or 8-bit ANSI color decimal code (`16`, `196`, etc)
+- case-insensitive RGB hex color code e.g. `ff00A0`
+
+There can be multiple fg and bg modificators. They should be tried in same
+order they are defined (left to right), until one allowed in current environment
+is found. if there is no suitable one, default should be used.
+
+Multiple style bindings with same name are not allowed but pre-defined ones can
+be overwritten.
 
 ### Tags
+Each key starts with `#` is not a key, but a tag, all following words in the
+same row starting with `#` are also tags. Multiple occurs of same tag in header
+SHOULD be deduplicated.
 
 ### Header Example
 ```3a
@@ -139,23 +187,26 @@ It works same way as [author key](#author-key).
 ;; This is comment. Block title on prev line is redundant, but
 ;; presented for example.
 title A Cool Art
+orig-author Some other guy
 author Me
 author You
-orig-author Some other guy
 ;; This is another comment
 editor nvim
 license CC0-1.0
 preview 3
 src https://example.com/my-cool-art
-delay 1s 10 2s
+delay 10 2:100
 #ascii #ansi
 #art
+style + i c bg:bright-red fg:green bg:ff0000 fg:196
 ```
 
 ## Body Block
 - last block is always a body
     - contains art itself (channels, frames, etc)
     - may contain blank lines
+
+## Style Block
 
 # Extending
 - Naming convention
@@ -168,6 +219,8 @@ delay 1s 10 2s
 # Formatting and Optimisation
 - order of blocks
 - order of KV pairs in header
+- everything that should be ignored during parsing (`\r` chars, delay values for non-existent frames, etc) except comments should be stripped
+- RGB color codes in lower case
 
 # MIME
 
