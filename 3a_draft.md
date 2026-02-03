@@ -14,8 +14,10 @@
 
 # Terminology
 - character/char - unicode code point
-- line and row are interchangeable. Ends on `\n`
+- lines vs rows
+    - lines are about plaintext. Ends with `\n`
     - What is empty/void/blank line
+    - rows are about art data
 
 # Concepts
 3a **art** is a set of channels.  
@@ -59,6 +61,9 @@ Users can define their own custom styles but there are some pre-defined ones:
 - `d` - ANSI 4-bit bright magenta text (code 95), default background.
 - `e` - ANSI 4-bit bright cyan text (code 96), default background.
 - `f` - ANSI 4-bit bright white text (code 97), default background.
+
+Styles may be completely disabled which means whole art shout be showed in
+default bg/fg colors.
   
 If all frames in channel have same content, they can be replaced with
 one **pinned** frame.  
@@ -77,24 +82,24 @@ continue to next one. Default delay value for 3a is 50.
 # File Format
 ## Comments
 Some parts of 3a file are *explicitly* defined as supporting comments.
-If so, comments are *entire* rows starting with `;;`. There is no multiline or
-comments or comments that occupy only part of row.
+If so, comments are *entire* lines starting with `;;`. There is no multiline or
+comments or comments that occupy only part of line.
 
 ## Structure
 3a file consists of blocks separated by one or more blank lines.
-There is always atleast two blocks: [header](#header-block) (first) and [body](#body-block) (last).  
-Each block starts with **block title row** of format `@<block name>` with two exceptions:
-- `@header` title row before header block can be always omitted.
-- `@body` title row before body block can be omitted if there is only header and body blocks in file.
+There is always atleast [header](#header-block) or [body](#body-block).  
+Each block starts with **block title line** of format `@<block name>` with two exceptions:
+- `@header` title line before header block can be always omitted.
+- `@body` title line before body block can be omitted if there is only header and body blocks in file.
 
 Block name can contain only ASCII alpha-numeric chars and `+-_.`.
 
 ## Header Block
-Header contains art metadata.
+Header is an always first block that contains art metadata.
 Header supports [comments](#comments).
-Header consists of, key-value pairs, each one on new row.
+Header consists of, key-value pairs, each one on new line.
 In each pair, first word (part before first whitespace char) at the beginning
-of the row is a key and remains text to the end of row is a value or values.
+of the line is a key and remains text to the end of line is a value or values.
 Value(s) parsing logic is specific for each key.  
 Some keys are allowed to occurs multiple times in the header, which is
 explicitly defined. For other keys, multiple occurrences are an error.  
@@ -176,13 +181,20 @@ is found. if there is no suitable one, default should be used.
 Multiple style bindings with same name are not allowed but pre-defined ones can
 be overwritten.
 
+### Styling Keys
+**styling** key defines is styling enabled for this art, or there is only text
+without any decorations. It have single case-insensitive boolean value which
+can be `yes` for true and `no` for false. If styling key is not provided but
+there is at least one style key, styling is enabled. If styling key is not
+provided and there is no style keys, styling is disabled.
+
 ### Tags
 Each key starts with `#` is not a key, but a tag, all following words in the
-same row starting with `#` are also tags. Multiple occurs of same tag in header
+same line starting with `#` are also tags. Multiple occurs of same tag in header
 SHOULD be deduplicated.
 
 ### Header Example
-```3a
+```
 @header
 ;; This is comment. Block title on prev line is redundant, but
 ;; presented for example.
@@ -194,19 +206,63 @@ author You
 editor nvim
 license CC0-1.0
 preview 3
+loop off
 src https://example.com/my-cool-art
 delay 10 2:100
 #ascii #ansi
 #art
+styling on
 style + i c bg:bright-red fg:green bg:ff0000 fg:196
 ```
 
 ## Body Block
-- last block is always a body
-    - contains art itself (channels, frames, etc)
-    - may contain blank lines
+Body is an always last block that contains art itself. Because there is no other
+blocks after it, body can contain blank lines.  
+
+Body consists of frames separated by one or more blank lines. Each frame
+consists of lines, separated by `\n` char.  
+
+If styling is enabled and style channel is not pinned, there are two
+rows (of same length) in each line going one after other without separator:
+- first one from text channel
+- second one is a corresponding row from style channel
+
+If styling is disabled, each line is exactly matching one row from text channel.
+
+Body example:
+```
+@body
+  ,--./,-.  444444444444
+ / //     \ 444cc4444444
+|          |444444444444
+ \        / 444444444444
+  '._,._,'  444444444444
+
+  ,--./,-.  444444444444
+ / //    _\ 444cc4444444
+|       /   4444444ffff4
+ \      `-, 4444444ffff4
+  '._,._,'  444444444444
+
+  ,--./,-.  444444444444
+ '--._,.--' 444444444444
+    }  {    fffffffffff4
+ ,-'._,-`-, fffffffffff4
+  '._,._,'  444444444444
+```
 
 ## Style Block
+`@style` block can be used to pin a single frame for style channel.  
+It consists of single frame with one row per line.  
+Example:
+```
+@body
+444444444444
+444cc4444444
+444444444444
+444444444444
+444444444444
+```
 
 # Extending
 - Naming convention
@@ -214,13 +270,14 @@ style + i c bg:bright-red fg:green bg:ff0000 fg:196
 - Custom blocks
 - Do not modify existed blocks or header sections, instead add new ones
 
-# Decoding
-
 # Formatting and Optimisation
+- comments preservation
+- keys with comments should not be removed even they are redundant
 - order of blocks
 - order of KV pairs in header
 - everything that should be ignored during parsing (`\r` chars, delay values for non-existent frames, etc) except comments should be stripped
 - RGB color codes in lower case
+- remove styles key if there is style keys
 
 # MIME
 
