@@ -103,7 +103,7 @@ of the line is a key and remains text to the end of line is a value or values.
 Value(s) parsing logic is specific for each key.  
 Some keys are allowed to occurs multiple times in the header, which is
 explicitly defined. For other keys, multiple occurrences are an error.  
-All keys and values are case sensitive unless otherwise stated.
+All keys and values are case sensitive unless otherwise stated.  
 
 ### Title Key
 **title** key defines an art title. Whole line after key to the end of line is
@@ -265,21 +265,28 @@ Example:
 ```
 
 # Extending
-- Naming convention
-- Custom header sections
-- Custom blocks
-- Do not modify existed blocks or header sections, instead add new ones
+3a format can be extended with custom blocks and header keys.
+They must follow [java package naming convention](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html).
 
 # Formatting and Optimisation
-- comments preservation
-- keys with comments should not be removed even they are redundant
-- order of blocks
-- order of KV pairs in header
-- everything that should be ignored during parsing (`\r` chars, delay values for non-existent frames, etc) except comments should be stripped
-- RGB color codes in lower case
-- remove styles key if there is style keys
+Here are some recommendations for auto formatting/optimsing 3a files.
+
+All redundant header keys and block titles should be stripped unless otherwise
+specified below.
+
+Comments should be allways preserverd if user havent request to strip them
+explicitly.
+All comment lines in header block that followed by key line are "attached" to
+this key line and they should be moved together.
+Keys with attached comments should not be stripped even if they are redundant.
+
+Everything that should be ignored during parsing (`\r` chars, delay values for
+non-existent frames, etc) except comments should be stripped.
+
+All case-insensitive strings should be converted to lowercase.
 
 # MIME
+Suggested MIME type for 3a is `text/x-aaa`.
 
 # Legacy Format
 - Automatic distinction from the legacy version
