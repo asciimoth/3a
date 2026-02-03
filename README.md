@@ -5,6 +5,9 @@ without spechial software needed. Espechially it textual representation preserve
 art layout unlike plaintext with ANSI escape codes which is historically used to
 store ASCII art.
 
+- [3a_legacy_spec](./3a_legacy_spec.md) - is an old specification (currently implemented in most tools)
+- [3a_draft](./3a_draft.md) - is a new WIP spec
+
 # Motivation
 Back in 2020 I was ricing my linux system and planned to use ASCII animations
 in rice.
@@ -30,6 +33,7 @@ You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 - [nuru](https://github.com/domsson/nuru) is a binary ascii art format. Seems abandoned.
 
 # TODO
+- New spec
 - [MIME info](https://specifications.freedesktop.org/shared-mime-info) files
 - Compact binary format
 
