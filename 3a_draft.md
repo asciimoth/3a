@@ -274,7 +274,7 @@ Here are some recommendations for auto formatting/optimsing 3a files.
 All redundant header keys and block titles should be stripped unless otherwise
 specified below.
 
-Comments should be allways preserverd if user havent request to strip them
+Comments should be always preserved if user havent request to strip them
 explicitly.
 All comment lines in header block that followed by key line are "attached" to
 this key line and they should be moved together.
@@ -289,19 +289,21 @@ All case-insensitive strings should be converted to lowercase.
 Suggested MIME type for 3a is `text/x-aaa`.
 
 # Legacy Format
-- Automatic distinction from the legacy version
+Actual version of 3a can be distinguished from [legacy one](./3a_legacy_spec.md)
+by `width` & `height` [params](./3a_legacy_spec.md#header).
 
 # Compatibility Notes
-- 3a fully support UNICODE by specification but it is not true for all software that can be used to render and display 3a (terminal emulators, etc).
-- It is recommended not to use grapheme clasters contains more that one code point in art.
-- Also different software can support different versions of UNICODE so it is recommended not to use things added in rescent UNICODE versions.
+3a fully support UNICODE by specification but it is not true for all software
+that can be used to render and display 3a (terminal emulators, etc). So it is
+recommended not to use grapheme clasters contains more that one
+code point in art.  
+
+Also different software can support different versions of UNICODE so it is
+recommended not to use things added in rescent versions of standard.
 
 # TODO
-- comments in header
-    - preserving during formatting
 - banned chars
     - tab, vtab
 - names banned for color mappings
 - suggested optimistations
     - replace all whitespace chars with ASCII space
-- suggested MIME type, MIME DB file
