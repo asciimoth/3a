@@ -1,23 +1,57 @@
-# Intro
+This specification defines 3a related concepts and terminology and how 3a text
+files should be read.  
+
+Content:
+- [Text](#text)
+- [Concepts](#concepts)
+- [File Format](#file-format)
+    - [Comments](#comments)
+    - [Structure](#structure)
+    - [Header Block](#header-block)
+        - [Title Key](#title-key)
+        - [Author Key](#author-key)
+        - [Original Author Key](#original-author-key)
+        - [Source Key](#source-key)
+        - [Editor Key](#editor-key)
+        - [License Key](#license-key)
+        - [Delay Key](#delay-key)
+        - [Loop Key](#loop-key)
+        - [Preview Key](#preview-key)
+        - [Style Key](#style-key)
+        - [Styling Keys](#styling-keys)
+        - [Tags](#tags)
+        - [Header Example](#header-example)
+    - [Body Block](#body-block)
+    - [Style Block](#style-block)
+- [Extending](#extending)
+- [Formatting and Optimisation](#formatting-and-optimisation)
+- [MIME](#mime)
+- [Legacy Format](#legacy-format)
+- [Compatibility Notes](#compatibility-notes)
 
 # Text
-- unicode
-- graphemes
-- banned chars
-    - `\t`
-- `\r` should be absolutely ignored
+3a format is UNICODE based and all text related terms should be interpreted in 
+the context of UNICODE.  
+Also:
+- "character"/"char" means UNICODE code point
+- "space" / "ASCII space" is a `U+0020` code point: ` `
+- "newline" is a `U+000A` aka `\n` char
+- "word" is a sequence of chars delimited by text start/end, newline, or any whitespace character
+- "line" is a sequence of chars delimited by text start/end or newline
+- blank/void/empty line is a zero length line
 
-- what is ASCII alpha-numeric
-- what is whitespace char
-- what is ASCII space
-- what is "word"
+Some characters MUST be ignored by 3a decoder/encoder:
+- `U+000D` aka `\r`
+- C0 / C1 control characters (`U+0000..U+001F`, `U+007F..U+009F`) **except newline**
+- Zero-width / joiner characters: `U+200B–U+200F`, `U+FEFF`, `U+FE00–U+FE0F`
+- Combining marks: `U+0300..U+036F`
+- Bidirectional control codes: `U+202A..U+202E`, `U+2066..U+2069`
+- Surrogate code points: `U+D800..U+DFFF`
 
-# Terminology
-- character/char - unicode code point
-- lines vs rows
-    - lines are about plaintext. Ends with `\n`
-    - What is empty/void/blank line
-    - rows are about art data
+Also all of this charatcters must be replaced with ASCII space:
+- `U+0009` aka `\t` aka tab
+- any char from "Space Separator" UNICODE category
+- `U+180E` - Mongolian Vowel Separator
 
 # Concepts
 3a **art** is a set of channels.  
@@ -98,7 +132,7 @@ Block name can contain only ASCII alpha-numeric chars and `+-_.`.
 Header is an always first block that contains art metadata.
 Header supports [comments](#comments).
 Header consists of, key-value pairs, each one on new line.
-In each pair, first word (part before first whitespace char) at the beginning
+In each pair, first word at the beginning
 of the line is a key and remains text to the end of line is a value or values.
 Value(s) parsing logic is specific for each key.  
 Some keys are allowed to occurs multiple times in the header, which is
@@ -107,15 +141,15 @@ All keys and values are case sensitive unless otherwise stated.
 
 ### Title Key
 **title** key defines an art title. Whole line after key to the end of line is
-a single string value. Sequences of multiple copies of same whitespace char
+a single string value. Sequences of multiple copies of same space char
 SHOULD be replaced with one during decoding/encoding. All leading and trailing
-whitespace chars SHOULD be trimmed.
+space chars SHOULD be trimmed.
 
 ### Author Key
 **author** key defines author of an art. Value parsing rules are same for
 [title key](#title-key). Author key can occurs in header multiple times which
 means a set of authors. Multiple occurs of author key with same
-value (after whitespace trimming and deduplication) MUST be deduplicated.
+value (after space trimming and deduplication) MUST be deduplicated.
 
 ### Original Author Key
 **orig-author** key defines author of original art for derivatives ones.
@@ -124,7 +158,7 @@ It works same way as [author key](#author-key).
 ### Source Key
 **src** key defines link to art's original. Typically url. Whole line
 after key to the end of line is a single string value. All leading and trailing
-whitespace chars SHOULD be trimmed.
+space chars SHOULD be trimmed.
 
 ### Editor Key
 **editor** key provides info about editor software that was used to create this
@@ -132,14 +166,14 @@ art.
 
 ### License Key
 **license** key defines [SPDX license identifier](https://spdx.org/licenses/)
-or "proprietary" string. All leading and trailing whitespace chars SHOULD be
+or "proprietary" string. All leading and trailing space chars SHOULD be
 inored. Not defined license key or license key with unknown identifier MUST be
 treated as "proprietary" unless otherwise stated
 in context where 3a file is stored (LICENSE in repo, etc).
 
 ### Delay Key
 **delay** key defines frame delay(s) as described in [concepts](#concepts).
-It can have single or many values separated by one or multiple whitespaces.  
+It can have single or many values separated by one or multiple spaces.  
 One and only one value of delay key MUST be a string representation of
 unsigned decimal int. This value defines "global" delay.  
 There also can be arbitrary number of colon-separated int pairs. In each pair
@@ -160,7 +194,7 @@ such number, preview key SHOULD be ignored.
 
 ### Style Key
 **style** key defines new style binding. It have at least two values separated
-by whitespaces. First value is a single char - name of new style. All next
+by spaces. First value is a single char - name of new style. All next
 following values defines it modificators.  
 Modificators can be:
 - `i` - enables italic mode
@@ -301,9 +335,3 @@ code point in art.
 Also different software can support different versions of UNICODE so it is
 recommended not to use things added in rescent versions of standard.
 
-# TODO
-- banned chars
-    - tab, vtab
-- names banned for color mappings
-- suggested optimistations
-    - replace all whitespace chars with ASCII space
