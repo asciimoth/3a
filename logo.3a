@@ -1,72 +1,51 @@
-	Header starts here
-	Comments starts with tab char
-width 13	Count of symbols in column
-height 5	Count of rows in frames
-loop true
-colors full	Colors are specified for both text and background
-delay 200
+@3a
 title 3a demo
 author ASCIIMoth
-@ In header comments also may starts with @ char
+delay 200
+loop yes
+colors yes
+;; In header comments also may starts with @ char
 
+@body
+             fffffffffffff
+             fffffffffffff
+             fffffffffffff
+             fffffffffffff
+             fffffffffffff
 
+ _____       000000000ffff
+             fffffffffffff
+             fffffffffffff
+             fffffffffffff
+             fffffffffffff
 
-	There
-	is
-	one
-	or
-	more
-	empty
-	lines
-	between
-	header
-	and
-	body
+ _____       fffffffff0fff
+|___ /  __   0000000000fff
+             fffffffffffff
+             fffffffffffff
+             fffffffffffff
 
+ _____       ffffffffff0ff
+|___ /  __   ffffffffff0ff
+  |_ \ / _`  00000000000ff
+             ffffffffffff0
+             fffffffffffff
 
+ _____       fffffffffff0f
+|___ /  __ _ fffffffffff0f
+  |_ \ / _`  fffffffffff0f
+ ___) | (_|  000000000000f
+             fffffffffffff
 
-	Body starts here
-	First frame
-             fffffffffffff0000000000000	First row
-             fffffffffffff0000000000000	Second row
-             fffffffffffff0000000000000	Third row
-             fffffffffffff0000000000000
-             fffffffffffff0000000000000
+ _____       ffffffffffff0
+|___ /  __ _ ffffffffffff0
+  |_ \ / _` |ffffffffffff0
+ ___) | (_| |ffffffffffff0
+|____/ \__,_|0000000000000
 
-	Second frame
- _____       000000000fffffffffffff0000
-             fffffffffffff0000000000000
-             fffffffffffff0000000000000
-             fffffffffffff0000000000000
-             fffffffffffff0000000000000
+ _____       fffffffffffff
+|___ /  __ _ fffffffffffff
+  |_ \ / _` |fffffffffffff
+ ___) | (_| |fffffffffffff
+|____/ \__,_|fffffffffffff
 
-	Third frame
- _____       fffffffff0fff000000000f000
-|___ /  __   0000000000fffffffffffff000
-             fffffffffffff0000000000000
-             fffffffffffff0000000000000
-             fffffffffffff0000000000000
-
- _____       ffffffffff0ff0000000000f00
-|___ /  __   ffffffffff0ff0000000000f00
-  |_ \ / _`  00000000000fffffffffffff00
-             ffffffffffff00000000000000
-             fffffffffffff0000000000000
-
- _____       fffffffffff0f00000000000f0
-|___ /  __ _ fffffffffff0f00000000000f0
-  |_ \ / _`  fffffffffff0f00000000000f0
- ___) | (_|  000000000000fffffffffffff0
-             fffffffffffff0000000000000
-
- _____       ffffffffffff0000000000000f
-|___ /  __ _ ffffffffffff0000000000000f
-  |_ \ / _` |ffffffffffff0000000000000f
- ___) | (_| |ffffffffffff0000000000000f
-|____/ \__,_|0000000000000fffffffffffff
-
- _____       fffffffffffff0000000000000
-|___ /  __ _ fffffffffffff0000000000000
-  |_ \ / _` |fffffffffffff0000000000000
- ___) | (_| |fffffffffffff0000000000000
-|____/ \__,_|fffffffffffff0000000000000
