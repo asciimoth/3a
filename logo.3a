@@ -1,10 +1,12 @@
 @3a
+;; This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit
+;; http://creativecommons.org/licenses/by/4.0/.
 title 3a demo
 author ASCIIMoth
+license CC0-1.0
 delay 200
 loop yes
 colors yes
-;; In header comments also may starts with @ char
 
 @body
              fffffffffffff
