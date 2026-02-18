@@ -33,8 +33,35 @@ You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 - [nuru](https://github.com/domsson/nuru) is a binary ascii art format. Seems abandoned.
 
 # TODO
-- [MIME info](https://specifications.freedesktop.org/shared-mime-info) files
-- Compact binary format
+- [ ] [MIME info](https://specifications.freedesktop.org/shared-mime-info) files
+- [ ] Compact binary format
+- implementations
+    - [X] rust
+    - [X] go
+    - [X] python
+    - [ ] JS
+    - [ ] lua
+    - [ ] zig
+    - [ ] odin
+- conversions to other formats
+    - [X] SVG
+    - [X] asciicast
+    - [ ] durformat
+    - [ ] images
+    - [ ] gif
+    - [ ] video
+- text editors support
+    - [ ] vim, nvim
+    - [ ] VsCode
+    - [ ] emacs?
+- [ ] LSP?
+- [ ] support in durdraw
+- [ ] 3a specific ascii art editor
+- [ ] file managers / viewers support 
+    - [ ] yazi
+    - [ ] ranger
+    - [ ] n3?
+    - [ ] [allmytoes](https://gitlab.com/allmytoes/allmytoes)?
 
 # License
 Files in this repository are distributed under the [CC0 license](./LICENSE).  
