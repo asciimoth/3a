@@ -46,22 +46,24 @@ You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 - conversions to other formats
     - [X] SVG
     - [X] asciicast
-    - [ ] durformat
-    - [ ] images
-    - [ ] gif
-    - [ ] video
+    - [X] png
+    - [X] gif
+    - [X] video
+- [ ] Image/gif/video to 3a conversion
 - text editors support
     - [ ] vim, nvim
     - [ ] VsCode
     - [ ] emacs?
 - [ ] LSP?
-- [ ] support in durdraw
 - [ ] 3a specific ascii art editor
-- [ ] file managers / viewers support 
+- file managers / viewers support 
     - [ ] yazi
     - [ ] ranger
     - [ ] n3?
     - [ ] [allmytoes](https://gitlab.com/allmytoes/allmytoes)?
+- syntax highliters
+    - [ ] bat
+    - [ ] tree-sitter
 
 # License
 Files in this repository are distributed under the [CC0 license](./LICENSE).  
