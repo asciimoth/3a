@@ -46,14 +46,19 @@ You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 - conversions to other formats
     - [X] SVG
     - [X] asciicast
+    - [X] durdraw
+    - [X] ttyrec
     - [X] png
     - [X] gif
-    - [X] video
+    - [X] webp
+    - [X] mp4
 - [ ] Image/gif/video to 3a conversion
 - text editors support
     - [ ] vim, nvim
     - [ ] VsCode
     - [ ] emacs?
+- ascii editors
+    - [ ] [playscii export plugin](https://jplebreton.com/playscii/howto_art.html#importandexport)
 - [ ] LSP?
 - [ ] 3a specific ascii art editor
 - file managers / viewers support 
