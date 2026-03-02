@@ -1,4 +1,6 @@
 # Animated Ascii Art (3a)
+[![3a logo](./logo.webp)](./logo.3a)
+
 3A (Animated ASCII Art) is a straightforward, human-readable text format for
 storing ASCII animations. It is disigned to be easy editable in any text editor
 without spechial software needed. Espechially it textual representation preserves
