@@ -23,8 +23,10 @@ You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 
 # Software Implementations
 - tools
-    - [aaa](https://github.com/DomesticMoth/aaa) - Tui tool for 3a files rendering
-    - [convert3a](https://github.com/DomesticMoth/convert3a) - Tool for convert 3a animations to media formats 
+    - [aaa](https://github.com/DomesticMoth/aaa) - Swiss Army knife tool for animated ascii art 
+        - play 3a in terminal
+        - convert 3a to asciicast/durformat/png/gif/webp/mp4/etc
+        - editing api
 - libs
     - [rs3a](https://github.com/DomesticMoth/rs3a)
     - [py3a](https://github.com/DomesticMoth/py3a) (outdated)
