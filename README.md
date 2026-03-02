@@ -35,7 +35,7 @@ You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 - [nuru](https://github.com/domsson/nuru) is a binary ascii art format. Seems abandoned.
 
 # TODO
-- [ ] [MIME info](https://specifications.freedesktop.org/shared-mime-info) files
+- [X] [MIME info](https://specifications.freedesktop.org/shared-mime-info) files
 - [ ] Compact binary format
 - implementations
     - [X] rust
