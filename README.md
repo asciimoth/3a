@@ -30,7 +30,7 @@ You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage)
 - libs
     - [rs3a](https://github.com/DomesticMoth/rs3a)
     - [py3a](https://github.com/DomesticMoth/py3a) (outdated)
-    - [go3a](https://github.com/DomesticMoth/go3a) (outdated)
+    - [go3a](https://github.com/DomesticMoth/go3a)
 
 # Similar Projects
 - [durdraw](https://github.com/cmang/durdraw) is a TUI ascii art editor with it's own format (gzipped json) with animations support.
