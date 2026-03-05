@@ -7,8 +7,7 @@ without spechial software needed. Espechially it textual representation preserve
 art layout unlike plaintext with ANSI escape codes which is historically used to
 store ASCII art.
 
-- [3a_legacy_spec](./3a_legacy_spec.md) - is an old specification (currently implemented in most tools)
-- [3a](./3a.md) - is a new spec
+You can read new 3a spec in [3a.md](./3a.md) and old deperecated one in [3a_legacy_spec.md](./3a_legacy_spec.md).
 
 # Motivation
 Back in 2020 I was ricing my linux system and planned to use ASCII animations
