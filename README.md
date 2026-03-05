@@ -19,18 +19,18 @@ the case. Therefore, I developed 3a.
 
 # Art Examples
 [logo.3a](./logo.3a) is an official 3a format example.  
-You can also find more 3a art [here](https://github.com/DomesticMoth/3a_storage).
+You can also find more 3a art [here](https://github.com/asciimoth/3a_storage).
 
 # Software Implementations
 - tools
-    - [aaa](https://github.com/DomesticMoth/aaa) - Swiss Army knife tool for animated ascii art 
+    - [aaa](https://github.com/asciimoth/aaa) - Swiss Army knife tool for animated ascii art 
         - play 3a in terminal
         - convert 3a to asciicast/durformat/png/gif/webp/mp4/etc
         - editing api
 - libs
-    - [rs3a](https://github.com/DomesticMoth/rs3a)
-    - [py3a](https://github.com/DomesticMoth/py3a) (outdated)
-    - [go3a](https://github.com/DomesticMoth/go3a)
+    - [rs3a](https://github.com/asciimoth/rs3a)
+    - [py3a](https://github.com/asciimoth/py3a)
+    - [go3a](https://github.com/asciimoth/go3a)
 
 # Similar Projects
 - [durdraw](https://github.com/cmang/durdraw) is a TUI ascii art editor with it's own format (gzipped json) with animations support.
