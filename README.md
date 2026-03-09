@@ -18,7 +18,7 @@ the case. Therefore, I developed 3a.
 
 # Art Examples
 [logo.3a](./logo.3a) is an official 3a format example.  
-You can also find more 3a art [here](https://github.com/asciimoth/3a_storage).
+You can also find more 3a art [here](https://openascii.moth.contact).
 
 # Software Implementations
 - tools
