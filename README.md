@@ -72,6 +72,8 @@ You can also find more 3a art [here](https://openascii.moth.contact).
 - syntax highliters
     - [ ] bat
     - [ ] tree-sitter
+- extensions
+    - [ ] [color template](./ext_color_template_wip.md)
 
 # License
 Files in this repository are distributed under the [CC0 license](./LICENSE).  
